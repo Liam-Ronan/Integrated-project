@@ -1,0 +1,91 @@
+.container {
+    padding-top: 40px;
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
+    grid-row: auto;
+}
+
+.containerTwo {
+    padding-top: 30px;
+    width: 1200px;
+    margin: auto;
+    justify-content: center;
+}
+
+.nested {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 1.5em;
+    grid-row-gap: 0em;
+    height: fit-content;
+}
+
+.width-1 {
+    grid-column: span 1;
+}
+
+.width-2 {
+    grid-column: span 2;
+}
+
+.width-3 {
+    grid-column: span 3;
+}
+
+.width-4 {
+    grid-column: span 4;
+}
+
+.width-5 {
+    grid-column: span 5;
+}
+
+.width-6 {
+    grid-column: span 6;
+}
+
+.width-7 {
+    grid-column: span 7;
+}
+
+.width-8 {
+    grid-column: span 8;
+}
+
+.width-9 {
+    grid-column: span 9;
+}
+
+.width-10 {
+    grid-column: span 10;
+}
+
+.width-11 {
+    grid-column: span 11;
+}
+
+.width-12 {
+    grid-column: span 12;
+}
+
+.flex {
+    display:flex;
+    justify-content: center;
+}
+
+.gap {
+    gap: 1.4em;
+}
+
+.gapTwo {
+    gap: 7.2em;
+}
+
+.f-between {
+    justify-content: space-between;
+}
+

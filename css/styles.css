@@ -1,0 +1,336 @@
+.tag {
+    background-color: black;
+    padding: 7px 15px 7px 15px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 20px;
+}
+
+.tag p {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Roboto', san-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    line-height: 12px;
+}
+
+.topStory h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1.4em;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+p {
+    font-family: 'Roboto', san-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7em;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+hr {
+    margin: 0px;
+    padding: 0px;
+    border-top: 1px solid black;
+    border-bottom: none;
+}
+
+h5 span {
+    font-weight: 900;
+}
+
+h5 {
+    font-family: 'Roboto', san-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    line-height: 1.3em;
+    color: #414141;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.author h6 {
+    font-family: 'Roboto', san-serif;
+    text-transform: uppercase;
+    color: #414141;
+    letter-spacing: 1.9px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    line-height: 1.3;
+}
+
+.author h6 span {
+    font-weight: 900;
+}
+
+.summary p {
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.heading h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    line-height: 1.4em;
+}
+
+.author h4 {
+    font-family: 'Roboto', san-serif;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    letter-spacing: 4px;
+    color: #414141;
+    margin-top: 15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+h4 span {
+    font-weight: 900;
+}
+
+.heading h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.4em;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.headline h2 {
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    line-height: 1.5em;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+}
+
+.medAuthor {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+.error {
+    color: red;
+    padding-bottom: 10px;
+    font-family: 'Merriweather', serif;
+}
+
+h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.center h3 {
+    font-weight: 200;
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
+}
+
+.types {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Roboto', san-serif;
+    letter-spacing: 2px;
+    padding: none;
+}
+
+.types hr {
+    border: 1px solid #000000;
+    margin: -5px;
+}
+
+.typeBtn {
+   background-color: #000000;
+   padding: 7px 15px 7px 15px;
+   font-size: 18px;
+   position: relative;
+   color: #ffffff;
+/*    cursor: pointer; */
+   margin-top: 30px;
+}
+
+.h3 {
+    padding-top: 15px;
+}
+
+.link-nav {
+    border-radius: 2px;
+    color: #000000;
+    font-family: 'Roboto', san-serif;
+    font-weight: 1000;
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding:15px 7px 15px;
+    position: relative;
+}
+
+.link-nav::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 7px;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 250ms ease-in;
+}
+
+.link-nav:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.typeBtn::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 5px;
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 150ms ease-in;
+}
+
+.typeBtn:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+
+}
+
+.footer-col{
+    width: 30%;
+    padding: 0 20px;
+}
+
+.footer-col h4{
+     font-size: 22px;
+     color: #000000;
+     text-transform: capitalize;
+     margin-bottom: 20px;
+     position: relative;
+     font-weight: 400;
+     font-family: 'Merriweather', serif;
+}
+
+.footer-col .social-links a{
+     display: inline-block;
+     height: 40px;
+     width: 40px;
+     background-color: #000000;
+     margin:0 10px 10px 0;
+     text-align: center;
+     line-height: 40px;
+     color: #ffffff;
+     transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover{
+     color: #000000;
+     background-color: #ffffff;
+}
+
+.hr {
+    color: 1px solid #000000;
+    padding-bottom: 10px;
+}
+
+.formStyle {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.form {
+    text-align: center;
+    display: inline-block;
+    padding-top: 40px;
+}
+
+.form h1 {
+    padding-bottom: 20px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=passsword] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=textarea] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+label {
+    text-transform: capitalize;
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+}
+
+.styleForm {
+    padding: 25px;
+    line-height: 35px;
+}
+
+form textarea {
+    resize: none;
+}
+
+.author h5 {
+    font-family: 'Merriweather', serif;
+    text-transform: none;
+    letter-spacing: 2px;
+    color: #000000;
+    font-size: 20px;
+    line-height: normal;
+}
+
+.author {
+    margin-top: 15px;
+}
+
+.bio p {
+    font-size: 16px;
+}
+
+.type h1::first-letter {
+    text-transform: uppercase;
+}
+
+.type {
+    margin-top: 15px;
+}
+
+.form textarea {
+    margin-top: 10px;
+}

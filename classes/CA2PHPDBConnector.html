@@ -1,0 +1,173 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+<article class="markdown-body">
+<h1 style="text-align: center;">CA2 PHP DBConnector</h1>
+<h2>Documentation:</h2>
+<p></p>
+<h4>Setting up the DBConnector file:</h4>
+<pre>
+  define('DATABASE_NAME', 'xxxxx_db');<span style="color:#999;"><-- replace xxxxx_db with your database name</span>
+  define('STORIES_TABLE_NAME', 'xxxxx');<span style="color:#999;"><-- replace xxxxx with your "stories" table name here</span>
+  define('CATEGORIES_TABLE_NAME', 'xxxxx');<span style="color:#999;"><-- insert "categories" table name here</span>
+  define('CATEGORIES_FOREIGN_KEY', 'xxxxx_id');<span style="color:#999;"><-- insert the name of the "categories" foreign_key here</span>
+  define('AUTHORS_TABLE_NAME', 'xxxxx');
+  define('AUTHORS_FOREIGN_KEY', 'xxxxx_id');
+</pre>
+<p></p>
+<h4>Using the DBConnector in your webpage:</h4>
+<pre>
+&lt;?php
+  require_once 'classes/DBConnector.php';
+
+  try {
+      
+    //$stories = Get::byCategory('Business');
+      
+  } catch (Exception $e) {
+    die(&quot;Exception: &quot; . $e-&gt;getMessage());
+  }
+?&gt;
+</pre>
+<p></p>
+<hr>
+<p><br></p>
+<h4>Getting Data from the database:</h4>
+<pre><code class="language-php"> <span class="hljs-number">1.</span> Get::all();
+ <span class="hljs-number">2.</span> Get::byId();
+ <span class="hljs-number">3.</span> Get::byCategory();
+
+<span class="hljs-comment">// an orderBy rule can be added to some of the above:</span>
+
+ <span class="hljs-number">1.</span> Get::allOrderBy();
+ <span class="hljs-number">2.</span> Get::byCategoryOrderBy();
+</code></pre>
+<p></p>
+<h4><em>Examples:</em></h4>
+<ol>
+<li>Getting all stories/categories/authors:</li>
+</ol>
+<pre><code class="language-php">Get::all(<span class="hljs-variable">$tableName</span>, <span class="hljs-variable">$limit</span> = <span class="hljs-number">0</span>, <span class="hljs-variable">$skip</span> = <span class="hljs-number">0</span>);
+<span class="hljs-comment">//or</span>
+Get::allOrderBy(<span class="hljs-variable">$tableName</span>, <span class="hljs-variable">$orderBy</span>, <span class="hljs-variable">$limit</span> = <span class="hljs-number">0</span>, <span class="hljs-variable">$skip</span> = <span class="hljs-number">0</span>);
+</code></pre>
+<p>Allows you to get all rows from a table.
+This function takes in <strong>one required parameter</strong> and <strong>two optional parameters</strong>, the first parameter is the name of the table you would like to retrieve data from. The second parameter can be used if you would like to retrieve a certain amount of rows, for example, you may want to retrieve 5 stories instead of all. The third parameter is used to skip rows. For example, you may want to retrieve 3 stories but skip the first 2 in the table (see below):</p>
+<pre><code class="language-php"><span class="hljs-comment">// get all stories</span>
+<span class="hljs-variable">$stories</span> = Get::all(<span class="hljs-string">'stories'</span>);
+
+<span class="hljs-comment">// get all authors</span>
+<span class="hljs-variable">$authors</span> = Get::all(<span class="hljs-string">'authors'</span>);
+
+<span class="hljs-comment">// get 5 stories </span>
+<span class="hljs-variable">$stories</span> = Get::all(<span class="hljs-string">'stories'</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-comment">// get 3 stories but skip the first 2</span>
+<span class="hljs-variable">$stories</span> = Get::all(<span class="hljs-string">'stories'</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>);
+
+<span class="hljs-comment">// get all stories order by date ascending</span>
+<span class="hljs-variable">$stories</span> = Get::allOrderBy(<span class="hljs-string">'stories'</span>, <span class="hljs-string">'date ASC'</span>);
+
+<span class="hljs-comment">// get 20 stories order by date descending</span>
+<span class="hljs-variable">$stories</span> = Get::allOrderBy(<span class="hljs-string">'stories'</span>, <span class="hljs-string">'date DESC'</span>, <span class="hljs-number">20</span>);
+
+<span class="hljs-comment">// get 20 stories order by date descending but skip the first 5</span>
+<span class="hljs-variable">$stories</span> = Get::allOrderBy(<span class="hljs-string">'stories'</span>, <span class="hljs-string">'date DESC'</span> <span class="hljs-number">20</span>, <span class="hljs-number">5</span>);
+</code></pre>
+<hr>
+<p></p>
+<ol start="2">
+<li>Getting stories/categories/authors by id:</li>
+</ol>
+<pre><code class="language-php">Get::byId(<span class="hljs-variable">$tableName</span>, <span class="hljs-variable">$id</span>);
+</code></pre>
+<p>Allows you to get rows from a table based on the id.
+This function takes in <strong>two required parameter</strong>, the first parameter is the name of the table you would like to retrieve data from. The second parameter is the id number of the row you would like to retrieve.</p>
+<pre><code class="language-php"><span class="hljs-comment">// get story with id 3</span>
+<span class="hljs-variable">$stories</span> = Get::byId(<span class="hljs-string">'stories'</span>, <span class="hljs-number">3</span>);
+
+<span class="hljs-comment">// get author with id 7</span>
+<span class="hljs-variable">$authors</span> = Get::byId(<span class="hljs-string">'authors'</span>, <span class="hljs-number">7</span>);
+</code></pre>
+<hr>
+<p></p>
+<ol start="3">
+<li>Getting a story by category:</li>
+</ol>
+<pre><code class="language-php">Get::byCategory(<span class="hljs-variable">$category</span>, <span class="hljs-variable">$limit</span> = <span class="hljs-number">0</span>, <span class="hljs-variable">$skip</span> = <span class="hljs-number">0</span>);
+Get::byCategoryOrderBy(<span class="hljs-variable">$category</span>, <span class="hljs-variable">$orderBy</span>, <span class="hljs-variable">$limit</span> = <span class="hljs-number">0</span>, <span class="hljs-variable">$skip</span> = <span class="hljs-number">0</span>);
+
+</code></pre>
+<p>Allows you to get stories that have the specified category.
+This function takes in <strong>one required parameter</strong> and <strong>two optional parameters</strong>, the first parameter is the name of the category of stories you would like to retrieve.</p>
+<pre><code class="language-php"><span class="hljs-comment">// get stories with the 'Sport' category</span>
+<span class="hljs-variable">$sportStories</span> = Get::byCategory(<span class="hljs-string">'Sport'</span>);
+
+<span class="hljs-comment">// get 4 stories with the 'Business' category</span>
+<span class="hljs-variable">$sportStories</span> = Get::byCategory(<span class="hljs-string">'Business'</span>, <span class="hljs-number">4</span>);
+
+<span class="hljs-comment">// get 4 stories with the 'Business' category order by date descending</span>
+<span class="hljs-variable">$sportStories</span> = Get::byCategoryOrderBy(<span class="hljs-string">'Business'</span>, <span class="hljs-string">'date desc'</span>, <span class="hljs-number">4</span>);
+</code></pre>
+<hr>
+<p><br></p>
+<h4>Posting (Saving) Data to the database:</h4>
+<pre><code class="language-php"> <span class="hljs-number">1.</span> Post::create();
+ <span class="hljs-number">2.</span> Post::edit();
+</code></pre>
+<p></p>
+<ol>
+<li>Saving a <strong>new</strong> story/category/author:</li>
+</ol>
+<pre><code class="language-php">Post::create(<span class="hljs-variable">$tableName</span>, <span class="hljs-variable">$data</span>);
+</code></pre>
+<p>Allows you to insert a new row into any table in your database. This functions takes in <strong>two parameters</strong>, the first parameter is the name of the table you would like to insert the row into. The second parameter is the row data.</p>
+<p>For example, to insert a new row into a table named stories:</p>
+<pre><code class="language-php"><span class="hljs-variable">$data</span> = [
+  <span class="hljs-string">'headline'</span> =&gt; <span class="hljs-string">"this is the headline of the story"</span>,
+  <span class="hljs-string">'shortHeadline'</span> =&gt; <span class="hljs-string">"this is a shorter headline"</span>,
+  <span class="hljs-string">'date'</span> =&gt; <span class="hljs-string">"20/12/21"</span>,
+  <span class="hljs-string">'time'</span> =&gt; <span class="hljs-string">"12:30"</span>,
+  <span class="hljs-string">'author_id'</span> =&gt; <span class="hljs-number">4</span>,
+  <span class="hljs-string">'category_id'</span> =&gt; <span class="hljs-number">3</span>
+];
+
+Post::create(<span class="hljs-string">'stories'</span>, <span class="hljs-variable">$data</span>);
+</code></pre>
+<hr>
+<p></p>
+<ol start="2">
+<li><strong>Updating</strong> a story/category/author:</li>
+</ol>
+<pre><code class="language-php">Post::edit(<span class="hljs-variable">$tableName</span>, <span class="hljs-variable">$id</span>, <span class="hljs-variable">$data</span>);
+</code></pre>
+<p>Allows you to modify an existing row in any table in your database. This functions takes in <strong>three parameters</strong>, the first parameter is the name of the table. The second parameter is the id number of the row you would like to update. The third parameter is the row data.</p>
+<p>For example, to update a row in a table named stories:</p>
+<pre><code class="language-php"><span class="hljs-variable">$data</span> = [
+  <span class="hljs-string">'headline'</span> =&gt; <span class="hljs-string">"this is a new headline for the story"</span>,
+  <span class="hljs-string">'shortHeadline'</span> =&gt; <span class="hljs-string">"this is a shorter headline"</span>,
+  <span class="hljs-string">'date'</span> =&gt; <span class="hljs-string">"20/12/21"</span>,
+  <span class="hljs-string">'time'</span> =&gt; <span class="hljs-string">"12:30"</span>,
+  <span class="hljs-string">'author_id'</span> =&gt; <span class="hljs-number">4</span>,
+  <span class="hljs-string">'category_id'</span> =&gt; <span class="hljs-number">3</span>
+];
+
+Post::edit(<span class="hljs-string">'stories'</span>, <span class="hljs-number">4</span>, <span class="hljs-variable">$data</span>); <span class="hljs-comment">//4 is the id number of the article to be edited</span>
+</code></pre>
+<hr>
+</article>
+
