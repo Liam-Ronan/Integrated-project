@@ -3,6 +3,9 @@
 
   try {
       
+    //Author By id
+    $author = Get::byId('journalists', $_GET['id']);
+
     //All Articles
     $allTypes= Get::all('articles', 7, 3);
 
@@ -71,26 +74,37 @@
             <div class="containerTwo">
                 <hr>
             </div>
-</header>     
+</header>  
 
 <div class="container flex">
         <div class="formStyle">
-            <form class="form" method="POST" action="addType.php">
-                <h1>Add a new Category</h1>
+            <form class="form" method="POST" action="updateAuthor.php">
+                <h1>Update This Journalist</h1>
+                <input id="id" type="hidden" name="id" value=<?= $author->id ?>>
                 <div>
-                    <label>Category Name</label><br>
-                    <input id="type" type="text" name="name"/>
-                    <div id="type_error" class="error"></div>
+                    <label>First Name</label><br>
+                    <input id="firstName" type="text" name="first_name" value=<?= $author->first_name ?>>
+                    <div id="first_name_error" class="error"></div>
                 </div>
                 <div>
-                    <label>Category Description</label><br>
-                    <textarea id="description" name="description" cols="70" rows="10"></textarea>
-                    <div id="description_error" class="error"></div>
+                    <label>Last Name</label><br>
+                    <input id="lastName" type="text" name="last_name" value=<?= $author->last_name ?>>
+                    <div id="last_name_error" class="error"></div>
+                </div>
+                <div>
+                    <label>Link</label><br>
+                    <input id="link" type="text" name="link" value=<?= $author->link ?>>
+                    <div id="link_error" class="error"></div>
+                </div>
+                <div>
+                    <label>Bio</label><br>
+                    <textarea id="bio" name="bio" cols="80" rows="15"><?= $author->bio ?></textarea>
+                    <div id="bio_error" class="error"></div>
                 </div>
                 <div class="formBtns flex gap">
                     <a class="typeBtn" href="index.php">Cancel</a>
-                    <input id="submit_Btn" class="typeBtn" type="submit">
-                </div>
+                    <input id="submit_Btn" class="typeBtn" type="submit"> 
+                </div>          
             </form>
         </div>
 </div>
@@ -128,6 +142,6 @@
             <hr>
         </div>
     </footer>
-    <script src="js/typeValidate.js"></script>
+    <script src="js/authorValidate.js"></script>
 </body>
 </html>

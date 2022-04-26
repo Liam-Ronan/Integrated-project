@@ -53,7 +53,7 @@
                             
                             <li><a class="link-nav" href="addAuthorForm.php">Sign Up</a></li>                         
                             <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                        
-                            <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li>                          
+                            <!-- <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li> -->                          
                             <li><a class="link-nav" href="addTypeForm.php">Create A Category</a></li>                         
                             <li><a class="link-nav" href="logIn.php">Log In</a></li>         
                            
@@ -101,7 +101,7 @@
                     <p><?= nl2br($category->description) ?></p>
                 </div>
 
-                <div class="flex width-6">
+                <div class="links flex width-6">
                 <a class="typeBtn" href="addTypeForm.php">Create A Category</a>
                 </div>
 

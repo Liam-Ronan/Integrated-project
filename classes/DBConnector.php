@@ -81,9 +81,9 @@ class Post
           throw new Exception("Failed to save data");
       } else {
           $rowCount = $stmt->rowCount();
-          if ($rowCount !== 1) {
+          /* if ($rowCount !== 0) {
               throw new Exception("Error saving data");
-          }
+          } */
       }
     }
 }

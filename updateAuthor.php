@@ -10,7 +10,7 @@
         'bio' => $_POST['bio']
       ];
       
-      Post::create('journalists', $data);
+      Post::edit('journalists', $_POST['id'], $data);
 
       header("Location: index.php");
     

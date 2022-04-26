@@ -21,7 +21,6 @@
 
     //Medium Stories
     $medStories = Get::allOrderBy('articles', 'published_date DESC', 6, 6);
-
     //Bottom Stories
     $bottomScienceStories = Get::byCategoryOrderBy('science', 'published_date ASC', 4);
     $bottomHealthStories = Get::byCategoryOrderBy('health', 'published_date ASC', 4);
@@ -72,7 +71,7 @@
                             
                             <li><a class="link-nav" href="addAuthorForm.php">Sign Up</a></li>                         
                             <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                        
-                            <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li>                          
+                            <!-- <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li> -->                          
                             <li><a class="link-nav" href="addTypeForm.php">Create A Category</a></li>                         
                             <li><a class="link-nav" href="logIn.php">Log In</a></li>         
                            

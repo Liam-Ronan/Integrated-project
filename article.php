@@ -54,7 +54,7 @@
                             
                             <li><a class="link-nav" href="addAuthorForm.php">Sign Up</a></li>                         
                             <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                        
-                            <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li>                          
+                            <!-- <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li> -->                          
                             <li><a class="link-nav" href="addTypeForm.php">Create A Category</a></li>                         
                             <li><a class="link-nav" href="logIn.php">Log In</a></li>         
                            
@@ -108,6 +108,11 @@
 
                 <div class="width-12">
                     <hr>
+                </div>
+
+                <div class="links flex width-6">
+                <a class="typeBtn" href="index.php">Cancel</a>
+                <a class="typeBtn" href="updateStoryForm.php?id=<?= $story->id ?>">Update This Story</a>
                 </div>
             </div>
         </div>

@@ -52,7 +52,7 @@
                             
                             <li><a class="link-nav" href="addAuthorForm.php">Sign Up</a></li>                         
                             <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                        
-                            <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li>                          
+                            <!-- <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li> -->                          
                             <li><a class="link-nav" href="addTypeForm.php">Create A Category</a></li>                         
                             <li><a class="link-nav" href="logIn.php">Log In</a></li>         
                            
@@ -102,8 +102,9 @@
                     <p><?= $author->bio ?></p>
                 </div>
 
-                <div class="flex width-6">
+                <div class="links flex width-6">
                 <a class="typeBtn" href="addAuthorForm.php">Become A Journalist</a>
+                <a class="typeBtn" href="updateAuthorForm.php?id=<?= $author->id ?>">Update This Author</a>
                 </div>
 
             </div>

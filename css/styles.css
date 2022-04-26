@@ -334,3 +334,7 @@ form textarea {
 .form textarea {
     margin-top: 10px;
 }
+
+.links .typeBtn{
+    margin-left: 20px;
+}

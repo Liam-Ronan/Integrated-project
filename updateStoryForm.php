@@ -2,7 +2,8 @@
   require_once 'classes/DBConnector.php';
 
   try {
-    $story = Get::byId('articles', 11); 
+    $story = Get::byId('articles', $_GET['id']);
+
     $types = Get::all('types');
     $journalists = Get::all('journalists');
 
@@ -77,6 +78,7 @@
 <div class="container flex">
         <div class="formStyle">
                 <form class="form" method="POST" action="updateStory.php">
+                <input id="id" type="hidden" name="id" value=<?= $story->id ?>>
                 <h1>Update A Story</h1>
                 <div class="styleForm">
                     <div>

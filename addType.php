@@ -5,7 +5,7 @@
     
     $data = [
         'name' => $_POST['name'],
-        'description' => $_POST['name']
+        'description' => $_POST['description']
       ];
       
       Post::create('types', $data);
