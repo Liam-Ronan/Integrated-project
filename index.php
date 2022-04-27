@@ -17,7 +17,7 @@
     $allTypes= Get::all('articles', 7, 3);
 
     //Main Story
-    $mainStories = Get::all('articles', 1, 5);
+    $mainStories = Get::all('articles', 1, 6);
 
     //Medium Stories
     $medStories = Get::allOrderBy('articles', 'published_date DESC', 6, 6);
@@ -70,11 +70,11 @@
                         <ul class="links containerTwo flex gap">
                             
                             <li><a class="link-nav" href="addAuthorForm.php">Sign Up</a></li>                         
-                            <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                        
-                            <!-- <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li> -->                          
+                            <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                                                 
                             <li><a class="link-nav" href="addTypeForm.php">Create A Category</a></li>                         
                             <li><a class="link-nav" href="logIn.php">Log In</a></li>         
-                           
+                            <li><a class="link-nav" href="#"><i class="fas fa-search"></i></a></li>
+                            <li><a class="link-nav" href="#"><i class="fa fa-bars"></i></a></li>
                         </ul>
                     </nav>
             </div>
@@ -127,8 +127,6 @@
                 </div>
 
                 <div class="width-6">
-                    <p><?= $mainStory->synopsis ?></p>
-
                     <p><?= $mainStory->synopsis ?></p>
                 </div>
 

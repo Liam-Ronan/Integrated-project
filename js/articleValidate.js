@@ -17,9 +17,8 @@ let journalistError = document.getElementById('journalist_error');
 let typeError = document.getElementById('type_error');
 
 /* REGEX PATTERNS */
-const ARTICLE_REGEX = /^[0-9a-zA-Z-',."" ]*$/;
+const ARTICLE_REGEX = /^[0-9a-zA-Z- ]*$/;
 const DATE_REGEX = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/; 
-/* const EVERYTHING = /^[]*$/; */
 
 submitBtn.addEventListener('click', onSubmitForm);
 

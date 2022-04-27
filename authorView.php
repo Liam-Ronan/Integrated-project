@@ -51,8 +51,7 @@
                         <ul class="links containerTwo flex gap">
                             
                             <li><a class="link-nav" href="addAuthorForm.php">Sign Up</a></li>                         
-                            <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                        
-                            <!-- <li><a class="link-nav" href="updateStoryForm.php">Update A Story</a></li> -->                          
+                            <li><a class="link-nav" href="addStoryForm.php">Create A Story</a></li>                                                
                             <li><a class="link-nav" href="addTypeForm.php">Create A Category</a></li>                         
                             <li><a class="link-nav" href="logIn.php">Log In</a></li>         
                            
