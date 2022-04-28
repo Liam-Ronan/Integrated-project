@@ -2,15 +2,24 @@
   require_once 'classes/validator.php';
   require_once 'classes/DBConnector.php';
 
-  if(isset($_POST['submit'])) {
-    $validation = new ArticleValidator($_POST);
-    $errors = $validation->validateForm();
 
-    if(empty($errors)){
-        header("Location: addStory.php");
+    session_start();
+    if(isset($_SESSION["data"]) and isset($_SESSION["errors"])) {
+        $data = $_SESSION["data"];
+        $errors = $_SESSION["errors"];   
     }
-  }      
+    else {
+        $data = [];
+        $errors = [];
+    }
 
+    
+    if(isset($_POST['submit'])) {
+
+        if(empty($errors)){
+            header("Location: addStory.php");
+        }
+      }  
   try {
       
     $types = Get::all('types');
@@ -86,14 +95,14 @@
             </div>
 </header>       
 
-<div class="container flex">
+<div class="container flex" id="myForm">
         <div class="formStyle">
             <form class="form" method="POST" action="addStory.php">
             <h1>Create A Story</h1>
                 <div class="styleForm">
                     <div>
                         <label>Headline</label><br>
-                        <textarea id="headline" name="headline" value="<?php ?>"cols="40" rows="3"></textarea>
+                        <textarea id="headline" name="headline" cols="40" rows="3"></textarea>
                         <div id="headline_error" class="error"><?php echo $errors['headline'] ?? '' ?></div>
                     </div>
 
@@ -191,6 +200,6 @@
                 <hr>
             </div>
 </footer>
-    <script src="js/articleValidate.js"></script>
+   <!--  <script src="js/articleValidate.js"></script> -->
 </body>
 </html>

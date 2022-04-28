@@ -59,16 +59,16 @@ class Post
     }
     public static function edit($tableName, $id, $data)
     {
-      $sql = 'UPDATE ' . $tableName . ' SET ';
+      $sql = "UPDATE " . $tableName . " SET ";
       $count = 0;
       foreach($data as $key => $value) {
-        $sql .= $key . ' = \'' . $value . '\'';
+        $sql .= $key . ' = \'' . addslashes($value) . ' \'';
         $count++;
         if($count != sizeof($data)) {
-          $sql .= ', ';
+          $sql .= ", ";
         }
       }
-      $sql .= ' WHERE id = ' . $id;
+      $sql .= " WHERE id = " . $id;
       // var_dump($sql);
       
       $conn = Connection::getInstance();

@@ -1,12 +1,15 @@
 <?php
 
+require_once 'classes/DBConnector.php';
+
 class ArticleValidator {
 
-    private $data;
-    private $errors = [];
+    public $data;
+    public $errors = [];
+    private $id;
     private static $fields = ['headline', 'brief_headline', 'synopsis', 'article', 'published_date'];
 
-    public function __construct($post_data) {
+    public function __construct($post_data, $id = 0) {
         $this->data = $post_data;
     }
 
@@ -23,12 +26,45 @@ class ArticleValidator {
         $this->validateSynopsis();
         $this->validateArticle();
         $this->validateDate();
-        return $this->errors;
+
+     
+        echo "<pre>";
+        print_r($this->errors);
+        echo "</pre>";
+
+        if(empty($this->errors)){
+            self::save();
+            return true;
+        }
+
+        return false ;
+    }
+
+    private function sanitize_input($data) {
+        $data = trim($data);
+        $data = stripcslashes($data);
+        $data = htmlspecialchars($data);
+    
+        return $data;
+    }
+
+    private function save() {
+        try {
+            if($this->id === 0){
+                Post::create('articles', $this->data);
+            }
+            else {
+                Post::edit('articles', $this->id, $this->data);
+            }
+            
+        } catch (Exception $e) {
+            die("Exception: " . $e->getMessage());
+        }
     }
 
     private function validateHeadline() {
 
-        $val = trim($this->data['headline']);
+        $val = self::sanitize_input($this->data['headline']);
 
         if(empty($val)) {
             $this->addError('headline', 'headline cannot be empty');
@@ -42,7 +78,7 @@ class ArticleValidator {
 
     private function validateBriefHeadline() {
 
-        $val = trim($this->data['brief_headline']);
+        $val = self::sanitize_input($this->data['brief_headline']);
 
         if(empty($val)) {
             $this->addError('brief_headline', 'brief headline cannot be empty');
@@ -56,7 +92,7 @@ class ArticleValidator {
 
     private function validateSynopsis() {
 
-        $val = trim($this->data['synopsis']);
+        $val = self::sanitize_input($this->data['synopsis']);
 
         if(empty($val)) {
             $this->addError('synopsis', 'synopsis cannot be empty');
@@ -70,7 +106,7 @@ class ArticleValidator {
 
     private function validateArticle() {
 
-        $val = trim($this->data['article']);
+        $val = self::sanitize_input($this->data['article']);
 
         if(empty($val)) {
             $this->addError('article', 'article cannot be empty');
@@ -84,14 +120,14 @@ class ArticleValidator {
 
     private function validateDate() {
 
-        $val = trim($this->data['article']);
+        $val = self::sanitize_input($this->data['published_date']);
 
         if(empty($val)) {
-            $this->addError('article', 'article cannot be empty');
+            $this->addError('published_date', 'Date cannot be empty');
         }
         else {
             if(!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $val)) {
-                $this->addError('article', 'date must be valid');
+                $this->addError('published_date', 'Date must be valid');
             }
         }
     }

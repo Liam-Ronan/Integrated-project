@@ -1,5 +1,5 @@
   <?php
-  require_once 'classes/DBConnector.php';
+  require_once 'classes/validator.php';
 
       try {
         
@@ -13,9 +13,18 @@
             'type_id' => $_POST['type_id']
           ];
           
-          Post::create('articles', $data);
+          $validator = new ArticleValidator($data);
 
-          header("Location: index.php");
+          if($validator->validateForm()){
+            die();
+            header("Location: index.php");
+          }
+          else{
+            session_start();
+            $_SESSION["data"] = $validator->data;
+            $_SESSION["errors"] = $validator->errors;
+            header("location: addStoryForm.php#myForm");
+          }
         
       } catch (Exception $e) {
         die("Exception: " . $e->getMessage());
@@ -24,7 +33,6 @@
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

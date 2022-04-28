@@ -7,6 +7,9 @@
     $types = Get::all('types');
     $journalists = Get::all('journalists');
 
+    $storyJournalist = Get::byId('journalists', $story->journalist_id);
+    $storyType = Get::byId('types', $story->type_id);
+
     $allTypes= Get::all('articles', 7, 3);
       
   } catch (Exception $e) {
@@ -114,8 +117,9 @@
                             <?php
                                 foreach($journalists as $journalist) {       
                             ?>
-                                <option value="<?= $journalist->id ?>"><?= $journalist->first_name ?> <?= $journalist->last_name ?></option>
+                                <option <?php echo $storyJournalist->id === $journalist->id ? 'selected' : '' ?> value="<?= $journalist->id ?>"><?= $journalist->first_name ?> <?= $journalist->last_name ?></option>
                             <?php
+
                                 }
                             ?>
                         </select>
@@ -128,7 +132,7 @@
                         <?php
                             foreach($types as $type) {
                         ?>
-                            <option value="<?= $type->id ?>"><?= $type->name ?></option>
+                            <option <?php echo $storyType->id === $type->id ? 'selected' : '' ?> value="<?= $type->id ?>"><?= $type->name ?></option>
                         <?php
                             }
                         ?>
