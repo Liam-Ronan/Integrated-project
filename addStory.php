@@ -16,8 +16,8 @@
           $validator = new ArticleValidator($data);
 
           if($validator->validateForm()){
-            die();
             header("Location: index.php");
+            die();
           }
           else{
             session_start();

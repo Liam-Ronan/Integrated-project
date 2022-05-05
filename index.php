@@ -21,6 +21,7 @@
 
     //Medium Stories
     $medStories = Get::allOrderBy('articles', 'published_date DESC', 6, 6);
+    
     //Bottom Stories
     $bottomScienceStories = Get::byCategoryOrderBy('science', 'published_date ASC', 4);
     $bottomHealthStories = Get::byCategoryOrderBy('health', 'published_date ASC', 4);

@@ -28,16 +28,20 @@ class ArticleValidator {
         $this->validateDate();
 
      
-        echo "<pre>";
+/*         echo "<pre>";
         print_r($this->errors);
         echo "</pre>";
+
+        echo "<pre>";
+        print_r($this->data);
+        echo "</pre>"; */
 
         if(empty($this->errors)){
             self::save();
             return true;
         }
 
-        return false ;
+        return false;
     }
 
     private function sanitize_input($data) {
@@ -50,12 +54,7 @@ class ArticleValidator {
 
     private function save() {
         try {
-            if($this->id === 0){
-                Post::create('articles', $this->data);
-            }
-            else {
-                Post::edit('articles', $this->id, $this->data);
-            }
+            Post::create('articles', $this->data);
             
         } catch (Exception $e) {
             die("Exception: " . $e->getMessage());
@@ -123,7 +122,7 @@ class ArticleValidator {
         $val = self::sanitize_input($this->data['published_date']);
 
         if(empty($val)) {
-            $this->addError('published_date', 'Date cannot be empty');
+            $this->addError('published_date', 'Date must be set');
         }
         else {
             if(!preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/', $val)) {

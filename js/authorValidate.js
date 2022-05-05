@@ -12,7 +12,7 @@ let bioError = document.getElementById('bio_error');
 
 /* REGEX PATTERNS */
 const NAME_REGEX = /^[a-zA-Z ]*$/;
-const BIO_REGEX = /^[0-9a-zA-Z-',.""-' ]*$/;
+const BIO_REGEX = /^[\s\S]*$/;
 const WEBSITE_REGEX = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
 
@@ -70,7 +70,7 @@ function onSubmitForm(evt) {
     if(bioInput.value === "") {
             showError(bioError, "The bio field is required");
     }
-    else if(!regexValid(bioInput.value)) {
+    else if(!regexValid(BIO_REGEX, bioInput.value)) {
             showError(bioError, "Only letters ,spaces & numbers allowed");
     }
 

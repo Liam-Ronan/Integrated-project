@@ -13,13 +13,6 @@
         $errors = [];
     }
 
-    
-    if(isset($_POST['submit'])) {
-
-        if(empty($errors)){
-            header("Location: addStory.php");
-        }
-      }  
   try {
       
     $types = Get::all('types');
@@ -102,32 +95,32 @@
                 <div class="styleForm">
                     <div>
                         <label>Headline</label><br>
-                        <textarea id="headline" name="headline" cols="40" rows="3"></textarea>
-                        <div id="headline_error" class="error"><?php echo $errors['headline'] ?? '' ?></div>
+                        <textarea id="headline" name="headline" value="<?php echo isset($_POST['headline']) ? $_POST['headline'] : '' ?>" cols="40" rows="3"></textarea>
+                        <div id="headline_error" class="error"><?php if (isset($errors["headline"])) echo $errors["headline"]; ?></div>
                     </div>
 
                     <div>
                         <label>Brief Headline</label><br>
-                        <textarea id="brief_headline" name="brief_headline" cols="40" rows="3"></textarea>
-                        <div id="brief_headline_error" class="error"><?php echo $errors['brief_headline'] ?? '' ?></div>
+                        <textarea id="brief_headline" name="brief_headline" value="<?php if (isset($data["brief_headline"])) echo $data["brief_headline"]; ?>" cols="40" rows="3"></textarea>
+                        <div id="brief_headline_error" class="error"><?php if (isset($errors["brief_headline"])) echo $errors["brief_headline"]; ?></div>
                     </div>
 
                     <div>
                         <label>Synopsis</label><br>
-                        <textarea id="synopsis" name="synopsis" cols="40" rows="10"></textarea>
-                        <div id="synopsis_error" class="error"><?php echo $errors['synopsis'] ?? '' ?></div>
+                        <textarea id="synopsis" name="synopsis" value="<?php if (isset($data["synopsis"])) echo $data["synopsis"]; ?>" cols="40" rows="10"></textarea>
+                        <div id="synopsis_error" class="error"><?php if (isset($errors["synopsis"])) echo $errors["synopsis"]; ?></div>
                     </div>
                     
                     <div>
                         <label>Article</label><br>
-                        <textarea id="article" name="article" cols="40" rows="10"></textarea>
-                        <div id="article_error" class="error"><?php echo $errors['article'] ?? '' ?></div>
+                        <textarea id="article" name="article" value="<?php if (isset($data["article"])) echo $data["article"]; ?>" cols="40" rows="10"></textarea>
+                        <div id="article_error" class="error"><?php if (isset($errors["article"])) echo $errors["article"]; ?></div>
                     </div>
                 
                     <div>
                         <label>Published Date</label><br>
-                        <input id="published_date" type="date" name="published_date"/>
-                        <div id="published_date_error" class="error"><?php echo $errors['published_date'] ?? '' ?></div>
+                        <input id="published_date" type="date" name="published_date" value="<?php if (isset($data["published_date"])) echo $data["published_date"]; ?>"/>
+                        <div id="published_date_error" class="error"><?php if (isset($errors["published_date"])) echo $errors["published_date"]; ?></div>
                     </div>
                     
                     <div>
@@ -200,6 +193,12 @@
                 <hr>
             </div>
 </footer>
-   <!--  <script src="js/articleValidate.js"></script> -->
+    <script src="js/articleValidate.js"></script>
 </body>
 </html>
+<?php 
+if(isset($_SESSION["data"]) and isset($_SESSION["errors"])) {
+    unset($_SESSION["data"]);
+    unset($_SESSION["errors"]);
+}
+?>
